@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::match(['GET', 'POST'], '/pay', 'RaveController@initialize')->name('pay');
+Route::get('/rave/callback', 'RaveController@callback')->name('callback');

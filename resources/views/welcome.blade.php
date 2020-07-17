@@ -81,18 +81,28 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Rave Payment Integration
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                @php
+                    $array = array(array('metaname' => 'color', 'metavalue' => 'blue'),
+                                    array('metaname' => 'size', 'metavalue' => 'big'));
+                @endphp
+                <h6>Buy Movie Tickets KES 50.00</h6>
+                <form method="POST" action="{{ route('pay') }}" id="paymentForm">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="amount" value="50" />
+                    <input type="hidden" name="payment_method" value="both" />
+                    <input type="hidden" name="description" value="Beats by Dre. 2017" />
+                    <input type="hidden" name="country" value="NG" />
+                    <input type="hidden" name="currency" value="NGN" />
+                    <input type="hidden" name="email" value="test@test.com" />
+                    <input type="hidden" name="firstname" value="Oluwole" />
+                    <input type="hidden" name="lastname" value="Adebiyi" />
+                    <input type="hidden" name="metadata" value="{{ json_encode($array) }}" >
+                    <input type="hidden" name="phonenumber" value="0746998777" />
+                    <input type="submit" value="Buy"  />
+                </form>
             </div>
         </div>
     </body>
